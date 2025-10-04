@@ -1,0 +1,64 @@
+<form class="login-form" [formGroup]="forminscription" (ngSubmit)="onSubmit()">
+    <p>Inscription</p>
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput formControlName="nom" placeholder="Votre nom" type="text">
+
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>prenom</mat-label>
+                    <input matInput formControlName="prenom" placeholder="Votre prenom" type="text">
+
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td> <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Date de naissance</mat-label>
+                    <input matInput formControlName="datedenaissance" placeholder="Votre date de naissance" type="date">
+
+                </mat-form-field>
+            </td>
+
+            <td>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Votre email" type="email">
+                </mat-form-field>
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput formControlName="password" placeholder="Votre mot de passe" type="password">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Confirmation Mot de passe</mat-label>
+                    <input matInput formControlName="passwordidentique" placeholder="Confirmatiomer votre mot de pass"
+                        type="password">
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- Bouton -->
+    <div class="btn-container">
+        <button [disabled]="!forminscription.valid" mat-raised-button class="buttoninscription" color="primary"
+            type="submit">
+            S'inscrire
+        </button>
+    </div>
+</form>

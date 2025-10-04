@@ -1,0 +1,159 @@
+<div class="wrapper">
+
+    <mat-toolbar color="primary">
+
+        <button [matMenuTriggerFor]="menu" mat-icon-button matMiniFab aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>dialpad</mat-icon>
+                <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+                <mat-icon>voicemail</mat-icon>
+                <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>notifications_off</mat-icon>
+                <span>Disable alerts</span>
+            </button>
+        </mat-menu>
+        <span class="toolbarpadding"></span>
+        <button mat-raised-button (click)="openPopupconnexion()"> Connexion </button>
+        <button mat-raised-button color="accent" (click)="openPopupinscription()"> Inscription </button>
+    </mat-toolbar>
+
+
+
+
+    <main class="content">
+
+        <div class="owl-carousel owl-theme hero-slider">
+            <div class="slide slide1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center text-white">
+
+                            <h1 class="display-3 my-4">We craft digital<br />experiances</h1>
+                            <a class="btn btn-brand">Nous contactez</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="services" class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="intro">
+                            <h6>Our Services</h6>
+                            <h1>What We Do?</h1>
+                            <p class="mx-auto">Contrary to popular belief, Lorem Ipsum is not simply random text. It has
+                                roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service">
+                            <img src="assets/images/icon1.png" alt="Icon 1" />
+                            <h5>Digital Marketing</h5>
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                piece of
+                                classical Latin literature from</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service">
+                            <img src="assets/images/icon2.png" alt="Icon 2" />
+                            <h5>Logo Designing</h5>
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                piece of
+                                classical Latin literature from</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service">
+                            <img src="assets/images/icon3.png" alt="Icon 3" />
+                            <h5>Buisness consulting</h5>
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                piece of
+                                classical Latin literature from</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service">
+                            <img src="assets/images/icon4.png" alt="Icon 4" />
+                            <h5>Videography</h5>
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                piece of
+                                classical Latin literature from</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service">
+                            <img src="assets/images/icon5.png" alt="Icon 5" />
+                            <h5>Brand Identity</h5>
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                piece of
+                                classical Latin literature from</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="service">
+                            <img src="assets/images/icon6.png" alt="Icon 6" />
+                            <h5>Ethical Hacking</h5>
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
+                                piece of
+                                classical Latin literature from</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- C'est ici que ton contenu de page s'affichera -->
+    </main>
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
+                        content.
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2014 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+
+</div>

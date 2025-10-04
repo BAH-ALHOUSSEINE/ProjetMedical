@@ -1,0 +1,25 @@
+<form class="login-form" [formGroup]="formconnexion" (ngSubmit)="onSubmit()">
+    <p style="text-align: center;">Connexion</p>
+
+    <!-- Champ Email -->
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Votre email" type="email">
+
+    </mat-form-field>
+
+    <!-- Champ Mot de passe -->
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput formControlName="password" placeholder="Votre mot de passe" type="password">
+
+    </mat-form-field>
+
+    <!-- Bouton -->
+    <div class="btn-container">
+        <button [disabled]="formconnexion.valid" mat-raised-button class="buttonconnexion" color="primary"
+            type="submit">
+            Se connecter
+        </button>
+    </div>
+</form>
