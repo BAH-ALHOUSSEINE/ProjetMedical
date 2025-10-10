@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
 import { MatButton, MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { Dialog } from '@angular/cdk/dialog';
+import { AddmedecinComponent } from '../addmedecin/addmedecin.component';
+import { AuthPatientService } from '../services/auth-patient.service';
+import { Patient } from '../models/patient.model';
 
 
 @Component({
@@ -18,9 +22,27 @@ import { RouterLink } from '@angular/router';
   templateUrl: './dashbord.component.html',
   styleUrl: './dashbord.component.css'
 })
-export class DashbordComponent {
-
-  test() {
-    alert("eeeeeeeeee");
+export class DashbordComponent implements OnInit {
+  patientconnecte: Patient | null = null;
+  constructor(private matdialog: MatDialog, private authpatientserice: AuthPatientService,) {
   }
+  ngOnInit(): void {
+
+    this.patientconnecte = this.authpatientserice.getCurrentPatient();
+    alert(this.patientconnecte?.nom + " gggggg " + this.patientconnecte?.matricule);
+
+  }
+
+
+
+  addmedecin() {
+    const dialogRef = this.matdialog.open(AddmedecinComponent, {
+      width: '600px',
+      maxWidth: '90vw',  // empêche le dépassement sur petits écrans
+      maxHeight: '90vh',
+      autoFocus: false  // évite le scroll automatique
+    });
+  }
+
+
 }

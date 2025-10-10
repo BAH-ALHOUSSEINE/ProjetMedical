@@ -1,0 +1,64 @@
+<form class="login-form" [formGroup]="formaddmedecin" (ngSubmit)="onaddmedecinSubmit()">
+    <p style="text-align: center;">AJOUTER MEDECIN</p>
+
+    <table class="example-full-width" cellspacing="0">
+
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Prenom</mat-label>
+                    <input matInput formControlName="prenom" placeholder="Votre prenom" type="text">
+
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput formControlName="nom" placeholder="Votre Nom" type="text">
+
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Specilité</mat-label>
+                    <input matInput formControlName="specialite" placeholder="Votre Specialité" type="text">
+
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" placeholder="Votre email" type="email">
+
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>dateNaissance</mat-label>
+                    <input matInput formControlName="dateNaissance" placeholder="Votre email" type="date">
+
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Mot de pass</mat-label>
+                    <input matInput formControlName="password" placeholder="Votre mot de pass" type="password">
+
+                </mat-form-field>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- Bouton -->
+    <div class="btn-container">
+        <button [disabled]="!formaddmedecin.valid" mat-raised-button class="buttonconnexion" color="primary"
+            type="submit">
+            Se connecter
+        </button>
+    </div>
+</form>

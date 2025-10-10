@@ -1,24 +1,39 @@
 <form class="login-form" [formGroup]="formconnexion" (ngSubmit)="onSubmit()">
-    <p style="text-align: center;">Connexion</p>
+    <p style="text-align: center; font-weight: bold;">Connexion</p>
 
-    <!-- Champ Email -->
-    <mat-form-field class="example-full-width" appearance="outline">
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Choisissez votre statut</mat-label>
+        <mat-select formControlName="status" required>
+            <mat-option value="patient">Patient</mat-option>
+            <mat-option value="medecin">Médecin</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- ✅ Champ Email -->
+    <mat-form-field appearance="outline" class="full-width">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email" placeholder="Votre email" type="email">
-
+        <input matInput formControlName="email" type="email" placeholder="exemple@mail.com" />
+        <mat-error *ngIf="formconnexion.get('email')?.hasError('required')">
+            L'email est requis
+        </mat-error>
+        <mat-error *ngIf="formconnexion.get('email')?.hasError('email')">
+            L'email n'est pas valide
+        </mat-error>
     </mat-form-field>
 
-    <!-- Champ Mot de passe -->
-    <mat-form-field class="example-full-width" appearance="outline">
+
+    <mat-form-field appearance="outline" class="full-width">
         <mat-label>Mot de passe</mat-label>
-        <input matInput formControlName="password" placeholder="Votre mot de passe" type="password">
-
+        <input matInput formControlName="password" type="password" placeholder="Votre mot de passe" />
+        <mat-error *ngIf="formconnexion.get('password')?.hasError('required')">
+            Le mot de passe est requis
+        </mat-error>
     </mat-form-field>
 
-    <!-- Bouton -->
-    <div class="btn-container">
-        <button [disabled]="formconnexion.valid" mat-raised-button class="buttonconnexion" color="primary"
-            type="submit">
+
+    <div class="btn-container" style="text-align: center;">
+        <button mat-raised-button color="primary" type="submit" [disabled]="formconnexion.invalid">
             Se connecter
         </button>
     </div>

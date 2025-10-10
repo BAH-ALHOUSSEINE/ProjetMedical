@@ -1,8 +1,10 @@
-<mat-form-field>
-    <mat-label>Select an option</mat-label>
-    <mat-select disableRipple>
-        <mat-option value="1">Option 1</mat-option>
-        <mat-option value="2">Option 2</mat-option>
-        <mat-option value="3">Option 3</mat-option>
+<mat-form-field appearance="fill">
+    <mat-label>Sélectionnez un médecin</mat-label>
+    <mat-select formControlName="medecin" disableRipple>
+        @for (item of listemedecin; track $index) {
+        <mat-option (click)="choisirmedecin(item.matricule)" [value]="item.matricule">
+            {{ item.nom }} {{ item.prenom }}
+        </mat-option>
+        }
     </mat-select>
 </mat-form-field>

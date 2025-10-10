@@ -38,6 +38,13 @@
 .formdialogueinscription {
     background-color: #43a047;
     margin-left: 10%;
+
+}
+
+.custom-dialog-container {
+    border-radius: 12px !important;
+    padding: 20px !important;
+    overflow: hidden;
 }
 
 html,

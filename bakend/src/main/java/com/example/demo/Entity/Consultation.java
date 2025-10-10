@@ -1,35 +1,33 @@
 package com.example.demo.Entity;
 
 import java.util.Date;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
-
-public class Rendezvous {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Consultation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Date date;
-    private Etat status;
+    private Date dateconsulataion;
+    private String diagnostique;
+    private String prescription;
     @ManyToOne
-    private Patient patient;
+    private Rendezvous rendezvous;
     @ManyToOne
     private Medecin medecin;
-    @OneToMany(mappedBy = "rendezvous")
-    private List<Consultation> consultation;
+    @ManyToOne
+    private Patient patient;
 
 }

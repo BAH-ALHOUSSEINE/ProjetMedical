@@ -13,12 +13,16 @@ import { ConnexionComponent } from '../connexion/connexion.component';
 
 @Component({
   selector: 'app-acceuil',
-  imports: [MatDialogModule, RouterOutlet, ReactiveFormsModule, FormsModule, MatListModule, MatSidenavModule, MatMenuModule, MatToolbar, MatButton, MatToolbarModule, MatButtonModule, MatIconModule],   // 👈 important,
+  imports: [MatDialogModule, RouterOutlet, ReactiveFormsModule, FormsModule, MatListModule, MatSidenavModule, MatMenuModule, MatToolbar, MatButton, MatToolbarModule, MatButtonModule, MatIconModule],
   templateUrl: './acceuil.component.html',
   styleUrl: './acceuil.component.css'
 })
 export class AcceuilComponent {
 
+
+
+
+  constructor(private dialog: MatDialog) { }
 
   openPopupinscription() {
     const dialogRef = this.dialog.open(InscriptionComponent, {
@@ -27,10 +31,6 @@ export class AcceuilComponent {
       panelClass: "formdialogueinscription"
     });
   }
-
-  constructor(private dialog: MatDialog) { }
-
-
   openPopupconnexion() {
     const dialogRef = this.dialog.open(ConnexionComponent, {
       height: '400px',

@@ -7,6 +7,7 @@ import { TakerendezvousComponent } from './takerendezvous/takerendezvous.compone
 import { DocumentComponent } from './document/document.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdddocumentComponent } from './adddocument/adddocument.component';
+import { AddmedecinComponent } from './addmedecin/addmedecin.component';
 
 
 export const routes: Routes = [
@@ -17,6 +18,7 @@ export const routes: Routes = [
             { path: "takerendezvous", component: TakerendezvousComponent },
             { path: "document", component: DocumentComponent },
             { path: "profile", component: ProfileComponent },
+            { path: "addmedecin", component: AddmedecinComponent },
             { path: "adddocument", component: AdddocumentComponent },
 
         ]
