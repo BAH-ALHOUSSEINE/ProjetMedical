@@ -1,0 +1,26 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    margin-left: 300px;
+    margin-top: 10%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttonconnexion {
+    background-color: green;
+    padding: 5%;
+    margin-right: auto;
+    color: white;
+}

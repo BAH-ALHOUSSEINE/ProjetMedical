@@ -10,6 +10,5 @@ import java.util.List;
 
 public interface RendezvousRepository extends JpaRepository<Rendezvous, Long> {
 
-    Optional<Rendezvous> findByMedecin(Medecin medecin);
-
+    Optional<List<Rendezvous>> findByMedecin(Medecin medecin);
 }

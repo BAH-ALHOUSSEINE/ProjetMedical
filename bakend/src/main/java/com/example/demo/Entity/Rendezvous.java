@@ -1,7 +1,11 @@
 package com.example.demo.Entity;
 
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,10 +28,12 @@ public class Rendezvous {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date date;
+    private String heure;
     private Etat status;
     @ManyToOne
     private Patient patient;
     @ManyToOne
+    @JsonIgnore
     private Medecin medecin;
     @OneToMany(mappedBy = "rendezvous")
     private List<Consultation> consultation;

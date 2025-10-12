@@ -15,4 +15,6 @@ public interface Medecinrepository extends JpaRepository<Medecin, Long> {
 
     Optional<Medecin> findById(Long id);
 
+    Optional<Medecin> findByMatricule(String matricule);
+
 }

@@ -8,6 +8,7 @@ import { DocumentComponent } from './document/document.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdddocumentComponent } from './adddocument/adddocument.component';
 import { AddmedecinComponent } from './addmedecin/addmedecin.component';
+import { AddrendezvousComponent } from './addrendezvous/addrendezvous.component';
 
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
             { path: "document", component: DocumentComponent },
             { path: "profile", component: ProfileComponent },
             { path: "addmedecin", component: AddmedecinComponent },
+            { path: "addrendezvous", component: AddrendezvousComponent },
             { path: "adddocument", component: AdddocumentComponent },
 
         ]

@@ -23,7 +23,7 @@
         </mat-menu>
         <span class="toolbarpadding"></span>
 
-        <button mat-raised-button color="accent" routerLink=""> Deconnexion </button>
+        <button mat-raised-button color="accent" (click)="deconnexion()"> Deconnexion </button>
     </mat-toolbar>
 
     <main class="content">
@@ -31,29 +31,43 @@
         <mat-drawer-container class="example-container">
             <mat-drawer mode="side" style="border-color: rgb(47, 74, 6);border-radius: 0%;" opened="true">
                 <mat-nav-list>
+                    @if(patientconnecte!=null){
                     <mat-list-item>
                         <button mat-raised-button class="btn-green" routerLink="profile">Profile Patient</button>
                     </mat-list-item>
-                    @if(!patientconnecte){
+                    }
+
+                    @if(medecinconnecte!=null){
                     <mat-list-item>
                         <button mat-raised-button class="btn-green" routerLink="profile">Profile Medecin</button>
                     </mat-list-item>
                     }
 
 
+
                     <mat-list-item>
                         <button mat-raised-button class="btn-green" routerLink="rendezvous">Mes rendez vous</button>
                     </mat-list-item>
-                    @if(!patientconnecte){
+
                     <mat-list-item>
                         <button mat-raised-button class="btn-green" (click)="addmedecin()">Ajouter Medecin</button>
                     </mat-list-item>
-                    }
 
+                    @if(patientconnecte!=null){
                     <mat-list-item>
                         <button mat-raised-button class="btn-green" routerLink="takerendezvous">Prendre Rendez
                             vous</button>
                     </mat-list-item>
+                    }
+
+                    @if (medecinconnecte!=null) {
+                    <mat-list-item>
+                        <button mat-raised-button class="btn-green" routerLink="addrendezvous">Ajouter un rendez vous
+                        </button>
+                    </mat-list-item>
+                    }
+
+
                     <mat-list-item>
                         <button mat-raised-button class="btn-green" routerLink="document">Documents</button>
                     </mat-list-item>

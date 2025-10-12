@@ -2,9 +2,45 @@
     <mat-label>Sélectionnez un médecin</mat-label>
     <mat-select formControlName="medecin" disableRipple>
         @for (item of listemedecin; track $index) {
-        <mat-option (click)="choisirmedecin(item.matricule)" [value]="item.matricule">
+        <mat-option (click)="medecinrendezvous(item.matricule)" [value]="item.matricule">
             {{ item.nom }} {{ item.prenom }}
         </mat-option>
         }
+
     </mat-select>
 </mat-form-field>
+
+@if(listenull==true){
+<p>Aucun rendez vous pour ce medecin</p>
+}
+@else {
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Colonne Date -->
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date | date:'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <!-- Colonne Heure -->
+    <ng-container matColumnDef="heure">
+        <th mat-header-cell *matHeaderCellDef> Heure </th>
+        <td mat-cell *matCellDef="let element"> {{element.heure }} </td>
+    </ng-container>
+
+    <!-- Colonne Status -->
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="choisir">
+        <th mat-header-cell *matHeaderCellDef> choisir</th>
+        <td mat-cell *matCellDef="let element"> <button>prendre</button> </td>
+    </ng-container>
+
+    <!-- En-tête de la table -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Lignes de la table -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+}

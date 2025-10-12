@@ -15,12 +15,12 @@ export class MedecinService {
   private baseUrl = `${environment.apiUrl}/medecin`;
 
 
-  addmedecin(medecin: Medecin): Observable<Medecin> {
+  addmedecin(medecin: Medecin): Observable<any> {
     const url = this.baseUrl + "/addmedecin";
     return this.http.post<Medecin>(url, medecin);
   }
 
-  connexionMedecin(email: string, password: string): Observable<Medecin> {
+  connexionMedecin(email: string, password: string): Observable<any> {
     const url = this.baseUrl + "/connexion";
     const medecinlogin = { email, password };
     return this.http.post<Medecin>(url, medecinlogin);

@@ -50,4 +50,15 @@ public class Servicemedecin {
     public List<Medecin> findAllMedecin() {
         return medecinrepository.findAll();
     }
+
+    public ResponseEntity<Medecinreponse> finbymatricule(String matricule) {
+
+        try {
+            java.util.Optional<Medecin> medecinmatricule = medecinrepository.findByMatricule(matricule);
+            return ResponseEntity.ok(Medecinreponse.builder().medecin(medecinmatricule).build());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body(Medecinreponse.builder().message("aucun medecin avec ce matricule").build());
+        }
+    }
 }

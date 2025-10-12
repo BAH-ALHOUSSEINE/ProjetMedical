@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MedecinService } from '../services/medecin.service';
+import { AuthMedecinService } from '../services/auth-medecin.service';
 
 @Component({
   selector: 'app-connexion',
@@ -32,7 +33,8 @@ export class ConnexionComponent implements OnInit {
     private authPatientService: AuthPatientService,
     private router: Router,
     private medecinService: MedecinService,
-    private dialogRef: MatDialogRef<ConnexionComponent>
+    private dialogRef: MatDialogRef<ConnexionComponent>,
+    private authmedecin: AuthMedecinService
   ) { }
 
   ngOnInit(): void {
@@ -67,7 +69,9 @@ export class ConnexionComponent implements OnInit {
     } else if (status === 'medecin') {
       this.medecinService.connexionMedecin(email, password).subscribe({
         next: (data) => {
-          console.log(' Médecin connecté :', data);
+          this.authmedecin.setCurrentMedecin(data.medecin);
+          console.log(data.medecin);
+
           alert('Médecin connecté avec succès.');
           this.dialogRef.close();
           this.router.navigate(['/dashbord']);
