@@ -1,6 +1,6 @@
 export class Medecin {
 
-    matricule !: string;
+    matricule !: String;
     nom !: string;
     prenom !: string;
     specialiste !: string;

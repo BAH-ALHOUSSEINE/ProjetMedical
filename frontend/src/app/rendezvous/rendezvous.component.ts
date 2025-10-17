@@ -1,27 +1,70 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
+import { AuthMedecinService } from '../services/auth-medecin.service';
+import { Medecin } from '../models/medecin.model';
+import { RendezvousService } from '../services/rendezvous.service';
+import { Rendezvous } from '../models/rendezvous.model';
+import { DatePipe } from '@angular/common';
+import { MatIconModule } from "@angular/material/icon";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-rendezvous',
-  imports: [MatTableModule],
+  imports: [MatTableModule, DatePipe, MatIconModule],
   templateUrl: './rendezvous.component.html',
   styleUrl: './rendezvous.component.css'
 })
 
-export class RendezvousComponent {
+export class RendezvousComponent implements OnInit {
 
-  ELEMENT_DATA: any[] = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
-  ];
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = this.ELEMENT_DATA;
+
+
+
+  constructor(private authmedecin: AuthMedecinService, private rendezvousservice: RendezvousService, private router: Router) {
+
+  }
+  medecinconnecte: Medecin | null = null;
+  medecinrendezvous!: Rendezvous[];
+  test !: boolean;
+  ngOnInit(): void {
+    this.medecinconnecte = this.authmedecin.getCurrentMedecin();
+    let matricule: String | undefined = this.medecinconnecte?.matricule;
+    this.rendezvousservice.listemedecinrendezvous("MED-2020-12-12-ALHOUSSEINE").subscribe({
+
+      next: (data) => {
+
+        this.medecinrendezvous = data;
+
+
+      },
+      error: (error) => {
+
+      }
+    });
+
+  }
+
+  deleterendezvous(id: Number) {
+    this.test = confirm("voulez vous surpprimer le renez vous");
+    if (this.test) {
+      alert(id);
+      this.rendezvousservice.deleterendezvous(id).subscribe({
+        next: (data) => {
+          this.medecinrendezvous = this.medecinrendezvous.filter(rendezvous => rendezvous.id !== id);
+        },
+        error: (data) => {
+          alert("erreur");
+        }
+      });
+    }
+  }
+
+  redirect(id: Number) {
+    alert(id);
+    this.router.navigate(["dashbord/editrendezvous/" + id]);
+
+  }
+
+
+  displayedColumns: string[] = ['date', 'heure', 'status', 'supprimer', 'modifié'];
 
 }

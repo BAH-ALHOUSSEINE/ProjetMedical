@@ -1,18 +1,22 @@
 package com.example.demo.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Entity.Etat;
 import com.example.demo.Entity.Medecin;
 import com.example.demo.Entity.Rendezvous;
 import com.example.demo.Repersitory.Medecinrepository;
 import com.example.demo.Repersitory.RendezvousRepository;
+import com.example.demo.dto.RendezvousDto;
 import com.example.demo.dto.Rendezvousreponse;
 
 import jakarta.el.ELException;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class Servicerendezvous {
@@ -39,11 +43,81 @@ public class Servicerendezvous {
         }
     }
 
-    public List<Rendezvous> medecinrendezvous(String matricule) {
+    public List<RendezvousDto> medecinrendezvous(String matricule) {
 
-        Medecin medecin = this.medecinrepository.findByMatricule(matricule).get();
-        return this.rendezvousRepository.findByMedecin(medecin).get();
+        return this.rendezvousRepository.findByMedecinMatricule(matricule).get()
+                .stream().map(this::convertRendezVousToRendezvousDto).collect(Collectors.toList());
 
     }
 
+    public void deleterendezvous(Long id) {
+        this.rendezvousRepository.deleteById(id);
+    }
+
+    public RendezvousDto findRendezvousById(long id) {
+
+        Rendezvous rendezvous = this.rendezvousRepository.findById(id).get();
+
+        RendezvousDto rendezvousDto = this.convertRendezVousToRendezvousDto(rendezvous);
+        return rendezvousDto;
+    }
+
+    public RendezvousDto convertRendezVousToRendezvousDto(Rendezvous rendezvous) {
+
+        RendezvousDto rendezvousDto = new RendezvousDto();
+
+        rendezvousDto.setDate(rendezvous.getDate());
+        rendezvousDto.setHeure(rendezvous.getHeure());
+        rendezvousDto.setStatus(rendezvous.getStatus());
+        rendezvousDto.setMedecin(rendezvous.getMedecin().getMatricule());
+        rendezvousDto.setId(rendezvous.getId());
+        return rendezvousDto;
+    }
+
+    public ResponseEntity<Rendezvousreponse> editrendezvous(Long id, Rendezvous rendezvousbody) {
+        Rendezvous rendezvous = rendezvousRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Rendez-vous non trouvé"));
+
+        rendezvous.setDate(rendezvousbody.getDate());
+        rendezvous.setHeure(rendezvousbody.getHeure());
+
+        rendezvousRepository.save(rendezvous);
+
+        return ResponseEntity.ok(Rendezvousreponse.builder().message("rendezvous editez avec sucees").build());
+
+    }
+
+    public ResponseEntity<Rendezvousreponse> takerendrezvous(Long id, Rendezvous rendezvousbody) {
+        try {
+
+            Rendezvous rendezvous = rendezvousRepository.findById(id)
+                    .orElseThrow(() -> new EntityNotFoundException("Rendez-vous non trouvé"));
+
+            rendezvous.setPatient(rendezvousbody.getPatient());
+            rendezvous.setStatus(Etat.RENEDEZVOUSPRIS);
+            rendezvousRepository.save(rendezvous);
+            return ResponseEntity.ok(Rendezvousreponse.builder().message("rendezvous pris").build());
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body(Rendezvousreponse.builder().message("erreur lors du choix de rendez vous").build());
+        }
+    }
+
+    public ResponseEntity<Rendezvousreponse> annulerrendezvous(Long id, Rendezvous rendezvousbody) {
+        try {
+
+            Rendezvous rendezvous = rendezvousRepository.findById(id)
+                    .orElseThrow(() -> new EntityNotFoundException("Rendez-vous non trouvé"));
+
+            rendezvous.setPatient(null);
+            rendezvous.setStatus(rendezvousbody.getStatus());
+            rendezvousRepository.save(rendezvous);
+            return ResponseEntity.ok(Rendezvousreponse.builder().message("rendezvous annuleravec succes").build());
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body(Rendezvousreponse.builder().message("erreur lors de l'nnulation  du rendez vous").build());
+        }
+    }
 }

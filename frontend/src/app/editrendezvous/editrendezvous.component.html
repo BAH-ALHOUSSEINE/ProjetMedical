@@ -1,0 +1,39 @@
+<form class="login-form" [formGroup]="rendezvousform" (ngSubmit)="editrendezvous()">
+    <p style="text-align: center;">AJOUTER UN RENDEZ VOUS</p>
+
+    <table class="example-full-width" cellspacing="0">
+
+
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input formControlName="daterendezvous" matInput [matDatepicker]="picker">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </td>
+
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>heure du rendez vous </mat-label>
+                    <input matInput formControlName="heureendezvous" placeholder="Votre heure de rendezvous"
+                        type="time">
+
+                </mat-form-field>
+            </td>
+        </tr>
+
+    </table>
+
+
+    <!-- Bouton -->
+    <div class="btn-container">
+        <button [disabled]="!rendezvousform.valid" mat-raised-button class="buttonconnexion" color="primary"
+            type="submit">
+            Ajouter
+        </button>
+    </div>
+</form>

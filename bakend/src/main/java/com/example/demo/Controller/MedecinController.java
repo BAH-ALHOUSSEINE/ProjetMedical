@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Entity.Medecin;
 import com.example.demo.Service.Servicemedecin;
+import com.example.demo.dto.MedecinDto;
 import com.example.demo.dto.Medecinreponse;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,7 @@ public class MedecinController {
     }
 
     @GetMapping("/allmedecin")
-    public List<Medecin> findAllmedecin() {
+    public List<MedecinDto> findAllmedecin() {
         return serivemedecin.findAllMedecin();
     }
 

@@ -58,4 +58,8 @@ public class Servicepatient {
 
     }
 
+    public Patient findpatientbyid(Long id) {
+        return patientrepository.findById(id).get();
+    }
+
 }

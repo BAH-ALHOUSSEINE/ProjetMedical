@@ -4,7 +4,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DatePipe } from '@angular/common';
+import { DatePipe, formatDate } from '@angular/common';
 import { AuthMedecinService } from '../services/auth-medecin.service';
 import { MedecinService } from '../services/medecin.service';
 import { Medecin } from '../models/medecin.model';
@@ -44,6 +44,7 @@ export class AddrendezvousComponent implements OnInit {
     const rendezvous: Rendezvous = new Rendezvous();
     alert(this.medecinconnecte.matricule);
     rendezvous.date = date;
+
     rendezvous.status = "Encours"
     rendezvous.heure = this.rendezvousform.value.heureendezvous;
     rendezvous.medecin = this.medecinconnecte;

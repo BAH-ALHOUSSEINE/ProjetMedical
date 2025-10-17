@@ -12,6 +12,6 @@ import lombok.Data;
 public class Medecinreponse {
 
     private String message;
-    private Optional<Medecin> medecin;
+    private MedecinDto medecin;
 
 }

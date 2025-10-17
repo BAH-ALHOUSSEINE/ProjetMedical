@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdddocumentComponent } from './adddocument/adddocument.component';
 import { AddmedecinComponent } from './addmedecin/addmedecin.component';
 import { AddrendezvousComponent } from './addrendezvous/addrendezvous.component';
+import { EditrendezvousComponent } from './editrendezvous/editrendezvous.component';
 
 
 export const routes: Routes = [
@@ -22,6 +23,7 @@ export const routes: Routes = [
             { path: "addmedecin", component: AddmedecinComponent },
             { path: "addrendezvous", component: AddrendezvousComponent },
             { path: "adddocument", component: AdddocumentComponent },
+            { path: "editrendezvous/:id", component: EditrendezvousComponent },
 
         ]
     }

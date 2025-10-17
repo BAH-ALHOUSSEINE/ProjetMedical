@@ -9,28 +9,30 @@ export class AuthPatientService {
 
 
 
-  private currentPatientSubject = new BehaviorSubject<Patient | null>(null);
-  currentPatient$ = this.currentPatientSubject.asObservable();
+  private currentPatient: Patient | null = null;
 
   constructor() {
-
-
+    // 🔄 Charger le patient depuis le localStorage au démarrage du service
+    const saved = localStorage.getItem('patient');
+    if (saved) {
+      this.currentPatient = JSON.parse(saved);
+    }
   }
 
-
+  // ✅ Sauvegarder le patient lors de la connexion
   setCurrentPatient(patient: Patient): void {
-    this.currentPatientSubject.next(patient);
-    localStorage.setItem('patient', JSON.stringify(patient)); // facultatif : garder la session
+    this.currentPatient = patient;
+    localStorage.setItem('patient', JSON.stringify(patient));
   }
 
-
+  // ✅ Récupérer le patient courant
   getCurrentPatient(): Patient | null {
-    return this.currentPatientSubject.value;
+    return this.currentPatient;
   }
 
-
+  // 🚪 Déconnexion
   logout(): void {
-    this.currentPatientSubject.next(null);
+    this.currentPatient = null;
     localStorage.removeItem('patient');
   }
 }

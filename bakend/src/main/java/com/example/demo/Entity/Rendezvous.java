@@ -33,7 +33,6 @@ public class Rendezvous {
     @ManyToOne
     private Patient patient;
     @ManyToOne
-    @JsonIgnore
     private Medecin medecin;
     @OneToMany(mappedBy = "rendezvous")
     private List<Consultation> consultation;

@@ -44,4 +44,9 @@ public class PatientController {
         return servicepatient.getByMatricule(matricule);
     }
 
+    @GetMapping("/findpatientbyid/{id}")
+    public Patient findpatientbyid(@PathVariable Long id) {
+        return servicepatient.findpatientbyid(id);
+    }
+
 }

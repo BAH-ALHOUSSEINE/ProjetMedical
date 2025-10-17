@@ -7,6 +7,10 @@ import { Rendezvous } from '../models/rendezvous.model';
 import { RendezvousService } from '../services/rendezvous.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { DatePipe } from '@angular/common';
+import { AuthPatientService } from '../services/auth-patient.service';
+import { PatientService } from '../services/patient.service';
+import { data } from 'jquery';
+import { error } from 'console';
 
 @Component({
   selector: 'app-takerendezvous',
@@ -16,16 +20,21 @@ import { DatePipe } from '@angular/common';
 })
 export class TakerendezvousComponent implements OnInit {
 
-  constructor(private servicemedecin: MedecinService, private servicerendezvous: RendezvousService) { }
+
+  constructor(private servicemedecin: MedecinService, private servicerendezvous: RendezvousService,
+    private authpatientserice: AuthPatientService, private patientservice: PatientService) { }
 
   // Colonnes à afficher dans la table
-  displayedColumns: string[] = ['date', 'heure', 'status', 'choisir'];
+  displayedColumns: string[] = ['date', 'heure', 'choisir'];
 
   // Données de la table
   dataSource!: MatTableDataSource<Rendezvous>;
   listemedecin!: Medecin[];
   listerendezvousmedecin!: Rendezvous[];
   listenull!: boolean;
+  id: any;
+  reponse !: boolean;
+  matricule !: String;
 
   ngOnInit(): void {
     this.servicemedecin.Allmedecin().subscribe({
@@ -40,6 +49,7 @@ export class TakerendezvousComponent implements OnInit {
 
   // Récupérer les rendez-vous du médecin
   medecinrendezvous(matricule: String): void {
+    this.matricule = matricule;
     this.servicerendezvous.listemedecinrendezvous(matricule).subscribe({
       next: (data) => {
         if (data.length == 0) {
@@ -56,4 +66,62 @@ export class TakerendezvousComponent implements OnInit {
       }
     });
   }
+
+  prendrerendezvous(id: Number) {
+
+    this.reponse = confirm("vouslez vous prendre un rendez vous");
+
+    if (this.reponse) {
+      const rendezvous: Rendezvous = new Rendezvous();
+      this.id = this.authpatientserice.getCurrentPatient()?.id;
+      this.patientservice.findByid(this.id).subscribe({
+
+        next: (data) => {
+
+          rendezvous.patient = data;
+          this.servicerendezvous.takerendezvous(id, rendezvous).subscribe({
+
+            next: (data) => {
+              alert(data.message);
+              this.medecinrendezvous(this.matricule);
+            },
+            error: (error) => {
+              alert(error.message);
+            }
+          });
+
+        },
+        error: (error) => {
+
+        }
+      });
+    }
+  }
+
+
+  annulerrendezvous(id: Number) {
+
+    this.reponse = confirm("vouslez d'annuler le rendez vous");
+
+    if (this.reponse) {
+      const rendezvous: Rendezvous = new Rendezvous();
+      this.id = this.authpatientserice.getCurrentPatient()?.id;
+
+
+      rendezvous.status = "RENDEZVOUSNONPRIS";
+      this.servicerendezvous.annulerrendezvous(id, rendezvous).subscribe({
+
+        next: (data) => {
+          alert(data.message);
+          this.medecinrendezvous(this.matricule);
+        },
+        error: (error) => {
+          alert(error.message);
+        }
+      });
+
+
+    }
+  }
+
 }

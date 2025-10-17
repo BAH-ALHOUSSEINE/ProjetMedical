@@ -27,4 +27,10 @@ export class PatientService {
     return this.http.post<Patient>(url, patient);
   }
 
+  findByid(id: Number | null): Observable<Patient> {
+
+    const url = `${this.baseUrl}/findpatientbyid/${id}`
+
+    return this.http.get<Patient>(url);
+  }
 }

@@ -2,8 +2,8 @@ package com.example.demo.Entity;
 
 public enum Etat {
 
-    Present,
+    RENEDEZVOUSPRIS,
     Abscent,
-    Encours,
+    RENDEZVOUSNONPRIS,
 
 }
