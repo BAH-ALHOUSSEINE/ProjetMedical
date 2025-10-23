@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.Entity.Patient;
 import com.example.demo.Repersitory.Patientrepository;
+import com.example.demo.dto.PatientDto;
 import com.example.demo.dto.Patientreponse;
 
 @Service
@@ -33,8 +34,9 @@ public class Servicepatient {
         if (patientrepository.findByEmail(patient.getEmail()).isPresent()) {
             Optional<Patient> patient2 = patientrepository.findByEmail(patient.getEmail());
             if (patient.getPassword().equals(patient2.get().getPassword())) {
+                PatientDto patientdto = this.convertPatienttoPatientdto(patient2.get());
                 return ResponseEntity.ok(
-                        Patientreponse.builder().message("authentification avec succes").patient(patient2).build());
+                        Patientreponse.builder().message("authentification avec succes").patient(patientdto).build());
             }
         }
 
@@ -48,8 +50,8 @@ public class Servicepatient {
         try {
 
             Optional<Patient> patient = patientrepository.findByMatricule(matricule);
-
-            return ResponseEntity.ok(Patientreponse.builder().patient(patient).build());
+            PatientDto patientdto = this.convertPatienttoPatientdto(patient.get());
+            return ResponseEntity.ok(Patientreponse.builder().patient(patientdto).build());
         } catch (Exception e) {
 
             return ResponseEntity.badRequest()
@@ -58,8 +60,25 @@ public class Servicepatient {
 
     }
 
-    public Patient findpatientbyid(Long id) {
-        return patientrepository.findById(id).get();
+    public PatientDto findpatientbyid(Long id) {
+
+        PatientDto patientdto = new PatientDto();
+        patientdto = convertPatienttoPatientdto(patientrepository.findById(id).get());
+        return patientdto;
+    }
+
+    public PatientDto convertPatienttoPatientdto(Patient patient) {
+
+        PatientDto patientdto = new PatientDto();
+
+        patientdto.setEmail(patient.getEmail());
+        patientdto.setMatricule(patient.getMatricule());
+        patientdto.setId(patient.getId());
+        patientdto.setNom(patient.getNom());
+        patientdto.setPrenom(patient.getPrenom());
+
+        return patientdto;
+
     }
 
 }

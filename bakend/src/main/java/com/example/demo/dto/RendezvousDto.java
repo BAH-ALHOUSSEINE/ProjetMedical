@@ -17,6 +17,8 @@ public class RendezvousDto {
     private Etat status;
     private Patient patient;
     private String medecin;
+    private Long idmedecin;
+    private Long idpatient;
     private Long id;
 
 }

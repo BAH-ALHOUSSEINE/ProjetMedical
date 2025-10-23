@@ -39,4 +39,19 @@ export class AcceuilComponent {
 
 
   }
+
+  images: string[] = [
+    '../../assets/images/cabinet\ medical\ 1.jpg)',
+    '../../assets/images/cabinet\ medical\ 1.jpg'
+  ];
+
+  currentIndex = 0;
+
+  nextImage() {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
+  }
+
+  prevImage() {
+    this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+  }
 }

@@ -1,1 +1,36 @@
-<p>rendezvouspatient works!</p>
+<div class="table-container">
+
+    <table mat-table [dataSource]="patientrendezvous" class="tablerendezvous">
+        <!-- Colonnes -->
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.date | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="heure">
+            <th mat-header-cell *matHeaderCellDef> Heure </th>
+            <td mat-cell *matCellDef="let element"> {{element.heure}} </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="annulé">
+            <th mat-header-cell *matHeaderCellDef> annulé </th>
+            <td mat-cell *matCellDef="let element"> <button (click)="deleterendezvous(element.id)" matFab
+                    aria-label="Example icon button with a delete icon">
+                    <mat-icon>delete</mat-icon>
+                </button> </td>
+        </ng-container>
+
+
+        <tr class="empty-row" *matNoDataRow>
+            <td colspan="3" class="text-center">Vous avez aucun rendez pour l'instant</td>
+        </tr>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+</div>

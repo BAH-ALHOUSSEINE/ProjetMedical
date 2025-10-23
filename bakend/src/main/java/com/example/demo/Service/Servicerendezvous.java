@@ -70,7 +70,12 @@ public class Servicerendezvous {
         rendezvousDto.setHeure(rendezvous.getHeure());
         rendezvousDto.setStatus(rendezvous.getStatus());
         rendezvousDto.setMedecin(rendezvous.getMedecin().getMatricule());
+        rendezvousDto.setIdmedecin(rendezvous.getMedecin().getId());
         rendezvousDto.setId(rendezvous.getId());
+        if (rendezvous.getPatient() != null) {
+            rendezvousDto.setIdpatient(rendezvous.getPatient().getId());
+        }
+
         return rendezvousDto;
     }
 
@@ -78,8 +83,17 @@ public class Servicerendezvous {
         Rendezvous rendezvous = rendezvousRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Rendez-vous non trouvé"));
 
-        rendezvous.setDate(rendezvousbody.getDate());
-        rendezvous.setHeure(rendezvousbody.getHeure());
+        if (rendezvousbody.getDate() != null) {
+            rendezvous.setDate(rendezvousbody.getDate());
+        }
+
+        if (rendezvousbody.getHeure() != null) {
+            rendezvous.setHeure(rendezvousbody.getHeure());
+        }
+
+        if (rendezvousbody.getStatus() != null) {
+            rendezvous.setStatus(rendezvousbody.getStatus());
+        }
 
         rendezvousRepository.save(rendezvous);
 
@@ -119,5 +133,15 @@ public class Servicerendezvous {
             return ResponseEntity.badRequest()
                     .body(Rendezvousreponse.builder().message("erreur lors de l'nnulation  du rendez vous").build());
         }
+    }
+
+    public List<RendezvousDto> patientrrendezvous(String matricule) {
+
+        List<Rendezvous> rendezvouspatient = rendezvousRepository.findByPatientMatricule(matricule).get();
+
+        List<RendezvousDto> rendezvousdto = rendezvouspatient.stream().map(this::convertRendezVousToRendezvousDto)
+                .collect(Collectors.toList());
+
+        return rendezvousdto;
     }
 }

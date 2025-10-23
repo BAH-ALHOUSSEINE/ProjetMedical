@@ -3,86 +3,88 @@
 
     <mat-toolbar color="primary">
 
-        <button [matMenuTriggerFor]="menu" mat-icon-button matMiniFab aria-label="Example icon button with a menu icon">
-            <mat-icon>menu</mat-icon>
-        </button>
 
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-                <mat-icon>dialpad</mat-icon>
-                <span>Redial</span>
-            </button>
-            <button mat-menu-item disabled>
-                <mat-icon>voicemail</mat-icon>
-                <span>Check voice mail</span>
-            </button>
-            <button mat-menu-item>
-                <mat-icon>notifications_off</mat-icon>
-                <span>Disable alerts</span>
-            </button>
-        </mat-menu>
+
+        <img id="logo" src="../../assets/images/logoclinique.jpg" alt="">
         <span class="toolbarpadding"></span>
 
         <button mat-raised-button color="accent" (click)="deconnexion()"> Deconnexion </button>
     </mat-toolbar>
+    @if(patientconnecte!=null){ <div class="infospatient">
+        <table>
+            <tr>
+                <td>Profil: <button
+                        style="background-color: greenyellow; padding: 5px; border: 2px solid white;">PATIENT</button>
+                </td>
+                <td>NOM:{{patientconnecte.nom}}</td>
+                <td>PRENOM : {{patientconnecte.prenom}}</td>
+                <td>MATRICULE : {{patientconnecte.matricule}}</td>
+            </tr>
+        </table>
+    </div> } @if(medecinconnecte!=null){ <div class="infospatient">
+        <table>
+            <tr>
+                <td>PROFIL: <button
+                        style="background-color: greenyellow; padding: 5px; border: 2px solid white;">Medecin</button>
+                </td>
+                <td>NOM:{{medecinconnecte.nom}}</td>
+                <td>PRENOM: {{medecinconnecte.prenom}}</td>
+                <td>MATRICULE : {{medecinconnecte.matricule}}</td>
+            </tr>
+        </table>
+    </div> }
+    <mat-drawer-container class="example-container">
+        <!-- Menu latéral -->
+        <mat-drawer mode="side" opened="true" class="side-menu">
+            <mat-nav-list>
 
-    <main class="content">
+                @if(patientconnecte != null) {
+                <mat-list-item>
+                    <button mat-raised-button class="btn-green" routerLink="profile">Profile Patient</button>
+                </mat-list-item>
 
-        <mat-drawer-container class="example-container">
-            <mat-drawer mode="side" style="border-color: rgb(47, 74, 6);border-radius: 0%;" opened="true">
-                <mat-nav-list>
-                    @if(patientconnecte!=null){
-                    <mat-list-item>
-                        <button mat-raised-button class="btn-green" routerLink="profile">Profile Patient</button>
-                    </mat-list-item>
-                    }
+                <mat-list-item>
+                    <button mat-raised-button class="btn-green" routerLink="myconsultation">Mes consultations</button>
+                </mat-list-item>
 
-                    @if(medecinconnecte!=null){
-                    <mat-list-item>
-                        <button mat-raised-button class="btn-green" routerLink="profile">Profile Medecin</button>
-                    </mat-list-item>
-                    }
+                <mat-list-item>
+                    <button mat-raised-button class="btn-green" routerLink="takerendezvous">
+                        Prendre Rendez-vous
+                    </button>
+                </mat-list-item>
 
+                <mat-list-item>
+                    <button mat-raised-button class="btn-green" routerLink="rendezvouspatient">
+                        Mes rendez-vous
+                    </button>
+                </mat-list-item>
+                }
 
+                @if(medecinconnecte != null) {
+                <mat-list-item>
+                    <button mat-raised-button class="btn-green" routerLink="profile">Profile Médecin</button>
+                </mat-list-item>
 
-                    <mat-list-item>
-                        <button mat-raised-button class="btn-green" routerLink="rendezvous">Mes rendez vous</button>
-                    </mat-list-item>
+                <mat-list-item>
+                    <button mat-raised-button class="btn-green" routerLink="rendezvous">
+                        Mes rendez-vous
+                    </button>
+                </mat-list-item>
 
-                    <mat-list-item>
-                        <button mat-raised-button class="btn-green" (click)="addmedecin()">Ajouter Medecin</button>
-                    </mat-list-item>
+                <mat-list-item>
+                    <button mat-raised-button class="btn-green" routerLink="addrendezvous">
+                        Ajouter un rendez-vous
+                    </button>
+                </mat-list-item>
+                }
 
-                    @if(patientconnecte!=null){
-                    <mat-list-item>
-                        <button mat-raised-button class="btn-green" routerLink="takerendezvous">Prendre Rendez
-                            vous</button>
-                    </mat-list-item>
-                    }
+            </mat-nav-list>
+        </mat-drawer>
 
-                    @if (medecinconnecte!=null) {
-                    <mat-list-item>
-                        <button mat-raised-button class="btn-green" routerLink="addrendezvous">Ajouter un rendez vous
-                        </button>
-                    </mat-list-item>
-                    }
-
-
-                    <mat-list-item>
-                        <button mat-raised-button class="btn-green" routerLink="document">Documents</button>
-                    </mat-list-item>
-
-
-
-
-                </mat-nav-list>
-            </mat-drawer>
-
-            <mat-drawer-content> <router-outlet></router-outlet> </mat-drawer-content>
-
-
-        </mat-drawer-container>
-    </main>
+        <mat-drawer-content class="main-content">
+            <router-outlet></router-outlet>
+        </mat-drawer-content>
+    </mat-drawer-container>
 
 
     <footer class="footer">

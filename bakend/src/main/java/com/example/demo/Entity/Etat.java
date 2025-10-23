@@ -5,5 +5,6 @@ public enum Etat {
     RENEDEZVOUSPRIS,
     Abscent,
     RENDEZVOUSNONPRIS,
+    TERMINE,
 
 }

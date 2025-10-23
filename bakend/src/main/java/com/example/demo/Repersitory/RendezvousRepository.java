@@ -12,6 +12,8 @@ public interface RendezvousRepository extends JpaRepository<Rendezvous, Long> {
 
     Optional<List<Rendezvous>> findByMedecinMatricule(String matricule);
 
+    Optional<List<Rendezvous>> findByPatientMatricule(String matricule);
+
     Optional<Rendezvous> findById(Long id);
 
     void deleteById(Long id);

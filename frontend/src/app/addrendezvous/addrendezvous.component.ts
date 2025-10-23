@@ -45,7 +45,7 @@ export class AddrendezvousComponent implements OnInit {
     alert(this.medecinconnecte.matricule);
     rendezvous.date = date;
 
-    rendezvous.status = "Encours"
+    rendezvous.status = "RENDEZVOUSNONPRIS"
     rendezvous.heure = this.rendezvousform.value.heureendezvous;
     rendezvous.medecin = this.medecinconnecte;
     this.servicerendezvous.addrendezvous(rendezvous).subscribe({

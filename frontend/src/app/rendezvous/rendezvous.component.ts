@@ -7,6 +7,13 @@ import { Rendezvous } from '../models/rendezvous.model';
 import { DatePipe } from '@angular/common';
 import { MatIconModule } from "@angular/material/icon";
 import { Router } from '@angular/router';
+import { PatientService } from '../services/patient.service';
+import { data } from 'jquery';
+import { error } from 'console';
+import { Patient } from '../models/patient.model';
+import { MatDialog } from '@angular/material/dialog';
+import { PatientdetailComponent } from '../patientdetail/patientdetail.component';
+import { ConsultationComponent } from '../consultation/consultation.component';
 @Component({
   selector: 'app-rendezvous',
   imports: [MatTableModule, DatePipe, MatIconModule],
@@ -19,20 +26,33 @@ export class RendezvousComponent implements OnInit {
 
 
 
-  constructor(private authmedecin: AuthMedecinService, private rendezvousservice: RendezvousService, private router: Router) {
+
+  constructor(private authmedecin: AuthMedecinService,
+    private rendezvousservice: RendezvousService, private router: Router,
+    private patientservice: PatientService, private matDialog: MatDialog) {
 
   }
   medecinconnecte: Medecin | null = null;
   medecinrendezvous!: Rendezvous[];
   test !: boolean;
+  patient !: Patient;
+
+
   ngOnInit(): void {
+
+    this.medecinrendezvouslist();
+
+  }
+
+  medecinrendezvouslist() {
     this.medecinconnecte = this.authmedecin.getCurrentMedecin();
     let matricule: String | undefined = this.medecinconnecte?.matricule;
-    this.rendezvousservice.listemedecinrendezvous("MED-2020-12-12-ALHOUSSEINE").subscribe({
+    this.rendezvousservice.listemedecinrendezvous(this.medecinconnecte?.matricule).subscribe({
 
       next: (data) => {
 
         this.medecinrendezvous = data;
+        console.log(data);
 
 
       },
@@ -40,7 +60,6 @@ export class RendezvousComponent implements OnInit {
 
       }
     });
-
   }
 
   deleterendezvous(id: Number) {
@@ -59,12 +78,43 @@ export class RendezvousComponent implements OnInit {
   }
 
   redirect(id: Number) {
-    alert(id);
+
     this.router.navigate(["dashbord/editrendezvous/" + id]);
+
+  }
+  infospatient(patientid: Number) {
+
+    this.patientservice.findByid(patientid).subscribe({
+      next: (data) => {
+        this.patient = data;
+        this.matDialog.open(PatientdetailComponent, {
+          width: '400px',
+          data: this.patient
+        });
+
+      },
+      error: (error) => {
+
+      }
+    })
+  }
+  addconsulattion(id: Number) {
+
+
+    this.matDialog.open(ConsultationComponent, {
+      width: '600px',
+      maxWidth: '90vw',
+      maxHeight: '90vh',
+      data: {
+        patient: this.patient,
+        idrendezvous: id   // ✅ passe-le ici à l’intérieur de "data"
+      }
+    });
+
 
   }
 
 
-  displayedColumns: string[] = ['date', 'heure', 'status', 'supprimer', 'modifié'];
+  displayedColumns: string[] = ['date', 'heure', 'status', 'supprimer', 'modifié', 'patient', 'consultation'];
 
 }

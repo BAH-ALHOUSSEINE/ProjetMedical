@@ -10,6 +10,9 @@ import { AdddocumentComponent } from './adddocument/adddocument.component';
 import { AddmedecinComponent } from './addmedecin/addmedecin.component';
 import { AddrendezvousComponent } from './addrendezvous/addrendezvous.component';
 import { EditrendezvousComponent } from './editrendezvous/editrendezvous.component';
+import { RendezvouspatientComponent } from './rendezvouspatient/rendezvouspatient.component';
+import { MyconsultationComponent } from './myconsultation/myconsultation.component';
+import { HistoriqueconsultationComponent } from './historiqueconsultation/historiqueconsultation.component';
 
 
 export const routes: Routes = [
@@ -23,7 +26,10 @@ export const routes: Routes = [
             { path: "addmedecin", component: AddmedecinComponent },
             { path: "addrendezvous", component: AddrendezvousComponent },
             { path: "adddocument", component: AdddocumentComponent },
+            { path: "myconsultation", component: MyconsultationComponent },
             { path: "editrendezvous/:id", component: EditrendezvousComponent },
+            { path: "rendezvouspatient", component: RendezvouspatientComponent },
+            { path: "historiqueconsultation/:matricule", component: HistoriqueconsultationComponent },
 
         ]
     }

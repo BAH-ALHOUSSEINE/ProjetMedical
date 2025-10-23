@@ -1,0 +1,13 @@
+<div class="container">
+    <h2 mat-dialog-title>Informations du patient</h2>
+    <mat-dialog-content>
+        <p>Nom : {{ data.nom }}</p>
+        <p>Prénom : {{ data.prenom }}</p>
+        <p>Email : {{ data.email }}</p>
+        <p>Matricule : {{ data.matricule }}</p>
+        <button (click)="redirect(data.matricule)">historique consultation</button>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Fermer</button>
+    </mat-dialog-actions>
+</div>

@@ -16,5 +16,5 @@ import lombok.NoArgsConstructor;
 public class Patientreponse {
 
     private String message;
-    private Optional<Patient> patient;
+    private PatientDto patient;
 }

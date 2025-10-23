@@ -61,5 +61,12 @@ export class RendezvousService {
     return this.http.put<any>(url, rendezvous);
   }
 
+  patientrendezvous(matricule: string | undefined): Observable<any> {
+
+    const url = this.baseUrl + "/patientrendezvous/" + matricule;
+
+    return this.http.get<any>(url);
+  }
+
 
 }

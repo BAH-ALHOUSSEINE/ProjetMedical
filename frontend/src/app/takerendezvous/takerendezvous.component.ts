@@ -74,6 +74,7 @@ export class TakerendezvousComponent implements OnInit {
     if (this.reponse) {
       const rendezvous: Rendezvous = new Rendezvous();
       this.id = this.authpatientserice.getCurrentPatient()?.id;
+      alert(this.id);
       this.patientservice.findByid(this.id).subscribe({
 
         next: (data) => {
@@ -104,10 +105,10 @@ export class TakerendezvousComponent implements OnInit {
     this.reponse = confirm("vouslez d'annuler le rendez vous");
 
     if (this.reponse) {
-      const rendezvous: Rendezvous = new Rendezvous();
+
       this.id = this.authpatientserice.getCurrentPatient()?.id;
 
-
+      const rendezvous: Rendezvous = new Rendezvous();
       rendezvous.status = "RENDEZVOUSNONPRIS";
       this.servicerendezvous.annulerrendezvous(id, rendezvous).subscribe({
 

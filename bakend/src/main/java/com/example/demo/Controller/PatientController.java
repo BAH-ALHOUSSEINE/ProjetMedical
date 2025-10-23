@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.PatientDto;
 import com.example.demo.dto.Patientreponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class PatientController {
     }
 
     @GetMapping("/findpatientbyid/{id}")
-    public Patient findpatientbyid(@PathVariable Long id) {
+    public PatientDto findpatientbyid(@PathVariable Long id) {
         return servicepatient.findpatientbyid(id);
     }
 

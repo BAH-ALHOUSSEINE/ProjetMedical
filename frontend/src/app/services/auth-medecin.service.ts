@@ -7,24 +7,29 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthMedecinService {
 
-  constructor() { }
+  private currentPatient: Medecin | null = null;
 
-  private currentPatientSubject = new BehaviorSubject<Medecin | null>(null);
-  currentPatient$ = this.currentPatientSubject.asObservable();
+  constructor() {
 
-  setCurrentMedecin(patient: Medecin): void {
-    this.currentPatientSubject.next(patient);
-    localStorage.setItem('medecin', JSON.stringify(patient)); // facultatif : garder la session
+    const saved = localStorage.getItem('medecin');
+    if (saved) {
+      this.currentPatient = JSON.parse(saved);
+    }
+  }
+
+  setCurrentMedecin(medecin: Medecin): void {
+    this.currentPatient = medecin;
+    localStorage.setItem('medecin', JSON.stringify(medecin));
   }
 
 
   getCurrentMedecin(): Medecin | null {
-    return this.currentPatientSubject.value;
+    return this.currentPatient;
   }
 
 
   logout(): void {
-    this.currentPatientSubject.next(null);
-    localStorage.removeItem('mdecin');
+    this.currentPatient = null;
+    localStorage.removeItem('medecin');
   }
 }

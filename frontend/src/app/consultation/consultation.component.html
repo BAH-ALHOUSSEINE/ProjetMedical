@@ -1,0 +1,51 @@
+<form class="login-form" [formGroup]="formconsultation" (ngSubmit)="addconsultation()">
+    <p style="text-align: center;">ajouter une consultation</p>
+
+    <table class="example-full-width" cellspacing="0">
+
+
+
+        <tr>
+            <td>
+                <mat-form-field>
+                    <mat-label>Choose a date</mat-label>
+                    <input formControlName="dateconsultation" matInput [matDatepicker]="picker">
+                    <mat-hint>DD/MM/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Diagnostique</mat-label>
+                    <textarea matInput formControlName="diagnostique"
+                        placeholder="Votre heure de rendez-vous"></textarea>
+                </mat-form-field>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Consulation</mat-label>
+                    <textarea matInput formControlName="prescription"
+                        placeholder="Votre heure de rendez-vous"></textarea>
+                </mat-form-field>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+    <!-- Bouton -->
+    <div class="btn-container">
+        <button [disabled]="!formconsultation.valid" mat-raised-button class="buttonconnexion" color="primary"
+            type="submit">
+            Ajouter
+        </button>
+    </div>
+</form>

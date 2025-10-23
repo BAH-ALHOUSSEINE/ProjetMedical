@@ -79,4 +79,9 @@ public class RendezvousController {
         return servicerendezvous.annulerrendezvous(id, rendezvous);
     }
 
+    @GetMapping("patientrendezvous/{matricule}")
+    public List<RendezvousDto> patientrrendezvous(@PathVariable String matricule) {
+        return servicerendezvous.patientrrendezvous(matricule);
+    }
+
 }
