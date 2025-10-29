@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping("/medecin")
@@ -43,9 +44,15 @@ public class MedecinController {
         return serivemedecin.findAllMedecin();
     }
 
-    @GetMapping("/finbymatricule")
-    public ResponseEntity<Medecinreponse> getMethodName(@PathVariable String matricule) {
+    @GetMapping("/finbymatricule/{matricule}")
+    public ResponseEntity<Medecinreponse> finbymatricule(@PathVariable String matricule) {
         return serivemedecin.finbymatricule(matricule);
+    }
+
+    @PutMapping("editmedecin/{id}")
+    public ResponseEntity<Medecinreponse> edirmedecin(@PathVariable Long id, @RequestBody Medecin medecin) {
+        return serivemedecin.editmedecin(id, medecin);
+
     }
 
 }

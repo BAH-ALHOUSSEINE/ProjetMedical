@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { Patient } from '../models/patient.model';
 
 @Injectable({
@@ -21,6 +20,7 @@ export class AuthPatientService {
 
 
   setCurrentPatient(patient: Patient): void {
+    console.log(patient);
     this.currentPatient = patient;
     localStorage.setItem('patient', JSON.stringify(patient));
   }

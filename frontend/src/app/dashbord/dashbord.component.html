@@ -76,12 +76,20 @@
                         Ajouter un rendez-vous
                     </button>
                 </mat-list-item>
+                <mat-list-item>
+                    <button mat-raised-button class="btn-green" (click)="addmedecin()">
+                        Ajouter un Medecin
+                    </button>
+                </mat-list-item>
                 }
 
             </mat-nav-list>
         </mat-drawer>
 
         <mat-drawer-content class="main-content">
+            <section class="dashbordacceuil">
+                <h1 style="color: white;">Bienvenue dans votre espace santé</h1>
+            </section>
             <router-outlet></router-outlet>
         </mat-drawer-content>
     </mat-drawer-container>

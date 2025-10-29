@@ -129,7 +129,7 @@ a {
 
 
 footer {
-    background: linear-gradient(0deg, rgba(8, 32, 50, 0.9), rgba(8, 32, 50, 0.9)), url(../../assets/images/bg_banner2.jpg), #082032;
+    background: linear-gradient(0deg, rgba(8, 32, 50, 0.9), rgba(8, 32, 50, 0.9)), url(../../assets/images/cabinet\ medical\ 2.jpg), #082032;
     ;
     background-size: cover;
     background-position: center;
@@ -179,4 +179,20 @@ footer .social-icons a {
     padding: 10px;
     overflow-y: auto;
 
+}
+
+.dashbordacceuil {
+    background-image: url("../../assets/images/cabinet medical 1.jpg");
+    background-size: cover;
+
+    background-position: center;
+    /* Centrer l’image */
+    background-repeat: no-repeat;
+    /* Pas de répétition */
+
+    /* Prend toute la hauteur de la fenêtre */
+    display: flex;
+    /* Pour centrer le contenu s’il y en a */
+    justify-content: center;
+    align-items: center;
 }

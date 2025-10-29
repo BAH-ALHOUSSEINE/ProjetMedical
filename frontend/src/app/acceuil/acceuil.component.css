@@ -12,6 +12,10 @@
     background: #eee;
 }
 
+.container {
+    margin: 50px auto;
+}
+
 /* Conteneur global : pour afficher les cartes sur une ligne */
 .cards-container {
     display: flex;
@@ -19,6 +23,7 @@
     gap: 30px;
     flex-wrap: wrap;
     margin-top: 50px;
+    margin: 50px auto;
 }
 
 /* Style de chaque card */
@@ -42,7 +47,6 @@
 .circle {
     width: 120px;
     height: 120px;
-    background-color: gray;
     border-radius: 50%;
     margin: 0 auto 20px auto;
 }
@@ -306,6 +310,128 @@ section {
     border-radius: 100px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f6f6f6;
+    color: #333;
+}
+
+.contact-section {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.info-item {
+    text-align: center;
+    width: 220px;
+}
+
+.info-item i {
+    font-size: 28px;
+    color: #2a8c2a;
+
+    margin-bottom: 10px;
+}
+
+.info-item p {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #2a8c2a;
+}
+
+.info-item a {
+    color: #2a8c2a;
+    ;
+    text-decoration: none;
+}
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+    flex: 1;
+    padding: 40px;
+    min-width: 300px;
+}
+
+.contact-form h3 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.contact-form button {
+    background: #2a8c2a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2a8c2a;
+    ;
+}
+
+.contact-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 .social-icons a:hover {
     background-color: #fff;
     color: var(--brand);
@@ -318,6 +444,71 @@ section {
 .conditions-section a {
     color: #fff;
     margin: 0 10px;
+}
+
+.team-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+}
+
+.team-section h2 {
+    font-size: 2.2em;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.team-intro {
+    font-size: 1.1em;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.team-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.team-photo {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.team-card h3 {
+    margin: 10px 0 5px;
+    color: #00695c;
+}
+
+.speciality {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.bio {
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.4em;
 }
 
 .navbar .navbar-nav .nav-link {
@@ -598,7 +789,7 @@ section {
 }
 
 footer {
-    background: linear-gradient(0deg, rgba(8, 32, 50, 0.9), rgba(8, 32, 50, 0.9)), url(../../assets/images/bg_banner2.jpg), #082032;
+    background: linear-gradient(0deg, rgba(8, 32, 50, 0.9), rgba(8, 32, 50, 0.9)), url(../../assets/images/cabinet\ medical\ 1.jpg), #082032;
     ;
     background-size: cover;
     background-position: center;

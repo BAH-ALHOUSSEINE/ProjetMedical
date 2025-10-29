@@ -33,4 +33,11 @@ export class PatientService {
 
     return this.http.get<Patient>(url);
   }
+
+  editpatient(id: Number, patient: Patient): Observable<any> {
+
+    const url = `${this.baseUrl}/editpatient/${id}`;
+
+    return this.http.put<any>(url, patient);
+  }
 }

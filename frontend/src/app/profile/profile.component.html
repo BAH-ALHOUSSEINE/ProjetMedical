@@ -6,34 +6,35 @@
         <!-- Left Card -->
         <div class="profile-card">
             <img src="https://cdn-icons-png.flaticon.com/512/1999/1999625.png" alt="Profile Avatar">
-            <h2>John Smith</h2>
-            <p>Full Stack Developer</p>
-            <p>Bay Area, San Francisco, CA</p>
+            <h2>Patient</h2>
+
         </div>
 
         <!-- Right Details -->
         <div class="details">
             <div class="row">
-                <strong>Full Name</strong>
-                <p>Johnatan Smith</p>
+                <strong>Nom</strong>
+                <p>{{patientconnecte?.nom}}</p>
             </div>
             <div class="row">
-                <strong>Email</strong>
+                <strong>Prenom</strong>
+                <p>{{patientconnecte?.prenom}}</p>
 
             </div>
             <div class="row">
-                <strong>Phone</strong>
-                <p>(097) 234-5678</p>
+                <strong>Email</strong>
+                <p>{{patientconnecte?.email}}</p>
+
             </div>
             <div class="row">
-                <strong>Mobile</strong>
-                <p>(098) 765-4321</p>
+                <strong>Matricule</strong>
+                <p>{{patientconnecte?.matricule}}</p>
+
             </div>
-            <div class="row">
-                <strong>Address</strong>
-                <p>Bay Area, San Francisco, CA</p>
-            </div>
+            <button style="background-color: greenyellow; paadding : 120px"
+                (click)="editpatient(patientconnecte?.id)">Edit Profil</button>
         </div>
+
     </div>
 
 </div>

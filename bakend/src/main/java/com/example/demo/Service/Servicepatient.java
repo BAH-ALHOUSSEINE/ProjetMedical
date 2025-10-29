@@ -81,4 +81,27 @@ public class Servicepatient {
 
     }
 
+    public ResponseEntity<Patientreponse> editpatient(Long id, Patient patient) {
+
+        try {
+            Patient patientedit = patientrepository.findById(id).get();
+            if (patient.getEmail() != null) {
+                patientedit.setEmail(patient.getEmail());
+            }
+            if (patient.getNom() != null) {
+                patientedit.setNom(patient.getNom());
+            }
+            if (patient.getPrenom() != null) {
+                patientedit.setPrenom(patient.getPrenom());
+            }
+            patientrepository.save(patientedit);
+
+            return ResponseEntity.ok().body(Patientreponse.builder().message("patient editer avec succes")
+                    .patient(convertPatienttoPatientdto(patientedit)).build());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body(Patientreponse.builder().message("erreur lors de l'edition" + e.getMessage()).build());
+        }
+    }
+
 }

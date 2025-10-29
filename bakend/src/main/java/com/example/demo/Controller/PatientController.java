@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @CrossOrigin
@@ -48,6 +49,13 @@ public class PatientController {
     @GetMapping("/findpatientbyid/{id}")
     public PatientDto findpatientbyid(@PathVariable Long id) {
         return servicepatient.findpatientbyid(id);
+    }
+
+    @PutMapping("editpatient/{id}")
+    public ResponseEntity<Patientreponse> editpatient(@PathVariable Long id, @RequestBody Patient patient) {
+        // TODO: process PUT request
+
+        return servicepatient.editpatient(id, patient);
     }
 
 }

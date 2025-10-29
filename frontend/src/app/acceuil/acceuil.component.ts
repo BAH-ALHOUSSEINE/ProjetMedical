@@ -7,13 +7,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { InscriptionComponent } from '../inscription/inscription.component';
 import { ConnexionComponent } from '../connexion/connexion.component';
 
 @Component({
   selector: 'app-acceuil',
-  imports: [MatDialogModule, RouterOutlet, ReactiveFormsModule, FormsModule, MatListModule, MatSidenavModule, MatMenuModule, MatToolbar, MatButton, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [MatDialogModule, RouterOutlet, ReactiveFormsModule, FormsModule, MatListModule, MatSidenavModule, MatMenuModule, MatToolbar, MatButton, MatToolbarModule, MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './acceuil.component.html',
   styleUrl: './acceuil.component.css'
 })

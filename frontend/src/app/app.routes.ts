@@ -13,8 +13,10 @@ import { EditrendezvousComponent } from './editrendezvous/editrendezvous.compone
 import { RendezvouspatientComponent } from './rendezvouspatient/rendezvouspatient.component';
 import { MyconsultationComponent } from './myconsultation/myconsultation.component';
 import { HistoriqueconsultationComponent } from './historiqueconsultation/historiqueconsultation.component';
-
-
+import { AuthGuard } from './guards/auth.guard';
+import { ContactComponent } from './contact/contact.component';
+import { EditpatientComponent } from './editpatient/editpatient.component';
+import { ProfilmedecinComponent } from './profilmedecin/profilmedecin.component';
 export const routes: Routes = [
     { path: "", component: AcceuilComponent },
     {
@@ -23,6 +25,7 @@ export const routes: Routes = [
             { path: "takerendezvous", component: TakerendezvousComponent },
             { path: "document", component: DocumentComponent },
             { path: "profile", component: ProfileComponent },
+            { path: "profilemedecin", component: ProfilmedecinComponent },
             { path: "addmedecin", component: AddmedecinComponent },
             { path: "addrendezvous", component: AddrendezvousComponent },
             { path: "adddocument", component: AdddocumentComponent },
@@ -30,8 +33,13 @@ export const routes: Routes = [
             { path: "editrendezvous/:id", component: EditrendezvousComponent },
             { path: "rendezvouspatient", component: RendezvouspatientComponent },
             { path: "historiqueconsultation/:matricule", component: HistoriqueconsultationComponent },
+            { path: "editpatient/:id", component: EditpatientComponent },
 
-        ]
-    }
+        ], canActivate: [AuthGuard]
+    },
+    { path: "contact", component: ContactComponent }
+
 
 ];
+
+

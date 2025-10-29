@@ -77,11 +77,13 @@ export class RendezvousComponent implements OnInit {
     }
   }
 
-  redirect(id: Number) {
+  editrendezvous(id: Number) {
 
     this.router.navigate(["dashbord/editrendezvous/" + id]);
 
   }
+
+
   infospatient(patientid: Number) {
 
     this.patientservice.findByid(patientid).subscribe({

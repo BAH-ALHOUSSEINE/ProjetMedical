@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive } from '@angular/router';
 import { Patient } from '../models/patient.model';
+import { AuthPatientService } from '../services/auth-patient.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,16 +12,24 @@ import { Patient } from '../models/patient.model';
 export class ProfileComponent implements OnInit {
 
 
-  constructor(private router: Router) { }
 
-  readonly prifil: any = signal('');
+  constructor(private router: Router, private authPatientService: AuthPatientService,
+
+  ) { }
+
+  patientconnecte!: Patient | null;
+
 
   ngOnInit(): void {
+    this.patientconnecte = this.authPatientService.getCurrentPatient();
 
 
 
   }
 
+  editpatient(id: Number | undefined) {
+    this.router.navigate(["dashbord/editpatient/" + id]);
+  }
 
 
 }

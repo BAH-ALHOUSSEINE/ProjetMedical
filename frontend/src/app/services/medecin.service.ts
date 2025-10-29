@@ -32,5 +32,21 @@ export class MedecinService {
     return this.http.get<Medecin[]>(url);
   }
 
+  editmedecin(id: Number, medecin: Medecin): Observable<any> {
+
+    const url = `${this.baseUrl}/editmedecin/${id}`;
+
+    return this.http.put<any>(url, medecin);
+  }
+
+  getmedecinbymatricule(matricule: String | undefined): Observable<any> {
+
+    const url = `${this.baseUrl}/finbymatricule/${matricule}`;
+
+    return this.http.get<any>(url);
+  }
+
+
+
 
 }

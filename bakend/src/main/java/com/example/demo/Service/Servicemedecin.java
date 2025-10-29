@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import java.lang.classfile.instruction.DiscontinuedInstruction.RetInstruction;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -82,5 +83,33 @@ public class Servicemedecin {
         medecinDto.setSpecialiste(medecin.getSpecialiste());
         medecinDto.setDateNaissance(medecin.getDateNaissance());
         return medecinDto;
+    }
+
+    public ResponseEntity<Medecinreponse> editmedecin(Long id, Medecin medecin) {
+
+        try {
+            Medecin medecinedit = medecinrepository.findById(id).get();
+
+            if (medecin.getEmail() != null) {
+                medecinedit.setEmail(medecin.getEmail());
+            }
+            if (medecin.getNom() != null) {
+                medecinedit.setNom(medecin.getNom());
+            }
+            if (medecin.getPrenom() != null) {
+                medecinedit.setPrenom(medecin.getPrenom());
+            }
+            if (medecin.getSpecialiste() != null) {
+                medecinedit.setSpecialiste(medecin.getSpecialiste());
+            }
+
+            medecinrepository.save(medecinedit);
+
+            return ResponseEntity.ok(Medecinreponse.builder()
+                    .message("medecin edité avec succes").build());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest()
+                    .body(Medecinreponse.builder().message("erreur lors de l'edition").build());
+        }
     }
 }
