@@ -16,9 +16,7 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './editmedecin.component.css'
 })
 export class EditmedecinComponent {
-  editmedecin() {
-    throw new Error('Method not implemented.');
-  }
+
 
   constructor(private router: ActivatedRoute, private formpatient: FormBuilder,
     private servicemedecin: MedecinService, private routers: Router, private authmedecin: AuthMedecinService) {
@@ -32,15 +30,17 @@ export class EditmedecinComponent {
   ngOnInit(): void {
 
 
-    this.id = this.router.snapshot.paramMap.get('id');
+    this.id = this.router.snapshot.paramMap.get('matricule');
     this.servicemedecin.getmedecinbymatricule(this.authmedecin.getCurrentMedecin()?.matricule).subscribe({
       next: (data) => {
-
+        console.log(data);
         this.formpatientgroupe = this.formpatient.group({
 
-          nom: [data.nom, [Validators.required]],
-          prenom: [data.prenom, [Validators.required]],
-          email: [data.email, [Validators.email]],
+          nom: [data.medecin.nom, [Validators.required]],
+          prenom: [data.medecin.prenom, [Validators.required]],
+          email: [data.medecin.email, [Validators.email]],
+
+          specialiste: [data.medecin.specialiste, [Validators.required]],
         });
 
       },
@@ -50,7 +50,7 @@ export class EditmedecinComponent {
       }
     });
   }
-  editpatient() {
+  editmedecin() {
 
     const medecin: Medecin = new Medecin();
 
@@ -62,10 +62,13 @@ export class EditmedecinComponent {
     this.servicemedecin.editmedecin(this.id, medecin).subscribe({
 
       next: (data) => {
-        alert("patient edité avec succes !!!!!!!!!!!!!!");
-        console.log(data);
+        alert("medecin  edité avec succes !!!!!!!!!!!!!!");
+        console.log("eeeee" + data.medecin);
         this.authmedecin.setCurrentMedecin(data.medecin);
-        this.routers.navigate(["dashbord/profile"]);
+
+        this.routers.navigate(["/dashbord/profilemedecin"]).then(() => {
+          window.location.reload();
+        });
       },
 
       error: (error) => {

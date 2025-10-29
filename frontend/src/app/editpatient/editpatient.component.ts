@@ -63,7 +63,9 @@ export class EditpatientComponent implements OnInit {
         alert("patient edité avec succes !!!!!!!!!!!!!!");
         console.log(data);
         this.authpatient.setCurrentPatient(data.patient);
-        this.routers.navigate(["dashbord/profile"]);
+        this.routers.navigate(["dashbord/profile"]).then(() => {
+          window.location.reload();
+        });
       },
 
       error: (error) => {

@@ -1,1 +1,44 @@
-<p>profilmedecin works!</p>
+<div class="page">
+
+
+
+    <div class="profile-container">
+        <!-- Left Card -->
+        <div class="profile-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1999/1999625.png" alt="Profile Avatar">
+            <h2>Medecin</h2>
+
+        </div>
+
+        <!-- Right Details -->
+        <div class="details">
+            <div class="row">
+                <strong>Nom</strong>
+                <p>{{medecinconnect?.nom}}</p>
+            </div>
+            <div class="row">
+                <strong>Prenom</strong>
+                <p>{{medecinconnect?.prenom}}</p>
+
+            </div>
+            <div class="row">
+                <strong>Email</strong>
+                <p>{{medecinconnect?.email}}</p>
+
+            </div>
+            <div class="row">
+                <strong>Matricule</strong>
+                <p>{{medecinconnect?.matricule}}</p>
+
+            </div>
+            <div class="row">
+                <strong>Specilité</strong>
+                <p>{{medecinconnect?.specialiste}}</p>
+
+            </div>
+            <button style="background-color: greenyellow; paadding : 120px" (click)="editmedecin()">Edit Profil</button>
+        </div>
+
+    </div>
+
+</div>

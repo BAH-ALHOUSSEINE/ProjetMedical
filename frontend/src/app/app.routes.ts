@@ -17,6 +17,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ContactComponent } from './contact/contact.component';
 import { EditpatientComponent } from './editpatient/editpatient.component';
 import { ProfilmedecinComponent } from './profilmedecin/profilmedecin.component';
+import { EditmedecinComponent } from './editmedecin/editmedecin.component';
 export const routes: Routes = [
     { path: "", component: AcceuilComponent },
     {
@@ -34,6 +35,7 @@ export const routes: Routes = [
             { path: "rendezvouspatient", component: RendezvouspatientComponent },
             { path: "historiqueconsultation/:matricule", component: HistoriqueconsultationComponent },
             { path: "editpatient/:id", component: EditpatientComponent },
+            { path: "editmedecin/:matricule", component: EditmedecinComponent },
 
         ], canActivate: [AuthGuard]
     },

@@ -1,5 +1,5 @@
 <form class="login-form" [formGroup]="formpatientgroupe" (ngSubmit)="editmedecin()">
-    <p>Edité Patient</p>
+    <p>Edite Medecin</p>
     <table class="example-full-width" cellspacing="0">
         <tr>
             <td>
@@ -10,8 +10,7 @@
 
                 </mat-form-field>
             </td>
-        </tr>
-        <tr>
+
 
 
             <td>
@@ -30,6 +29,14 @@
                 <mat-form-field class="example-full-width" appearance="outline">
                     <mat-label>Email</mat-label>
                     <input matInput formControlName="email" placeholder="Votre email" type="email">
+                </mat-form-field>
+
+            </td>
+            <td>
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>specialiste</mat-label>
+                    <input matInput formControlName="specialiste" placeholder="Votre specilité" type="text">
                 </mat-form-field>
 
             </td>

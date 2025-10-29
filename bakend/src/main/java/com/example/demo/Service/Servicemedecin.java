@@ -85,10 +85,10 @@ public class Servicemedecin {
         return medecinDto;
     }
 
-    public ResponseEntity<Medecinreponse> editmedecin(Long id, Medecin medecin) {
+    public ResponseEntity<Medecinreponse> editmedecin(String matricule, Medecin medecin) {
 
         try {
-            Medecin medecinedit = medecinrepository.findById(id).get();
+            Medecin medecinedit = medecinrepository.findByMatricule(matricule).get();
 
             if (medecin.getEmail() != null) {
                 medecinedit.setEmail(medecin.getEmail());
@@ -106,7 +106,7 @@ public class Servicemedecin {
             medecinrepository.save(medecinedit);
 
             return ResponseEntity.ok(Medecinreponse.builder()
-                    .message("medecin edité avec succes").build());
+                    .message("medecin edité avec succes").medecin(convertMedecintoMedecinDto(medecinedit)).build());
         } catch (Exception e) {
             return ResponseEntity.badRequest()
                     .body(Medecinreponse.builder().message("erreur lors de l'edition").build());

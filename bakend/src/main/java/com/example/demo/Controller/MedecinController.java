@@ -49,9 +49,9 @@ public class MedecinController {
         return serivemedecin.finbymatricule(matricule);
     }
 
-    @PutMapping("editmedecin/{id}")
-    public ResponseEntity<Medecinreponse> edirmedecin(@PathVariable Long id, @RequestBody Medecin medecin) {
-        return serivemedecin.editmedecin(id, medecin);
+    @PutMapping("editmedecin/{matricule}")
+    public ResponseEntity<Medecinreponse> edirmedecin(@PathVariable String matricule, @RequestBody Medecin medecin) {
+        return serivemedecin.editmedecin(matricule, medecin);
 
     }
 
