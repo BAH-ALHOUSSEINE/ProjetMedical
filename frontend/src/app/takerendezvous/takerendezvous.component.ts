@@ -69,7 +69,7 @@ export class TakerendezvousComponent implements OnInit {
 
   prendrerendezvous(id: Number) {
 
-    this.reponse = confirm("vouslez vous prendre un rendez vous");
+    this.reponse = confirm("voulez vous prendre un rendez vous");
 
     if (this.reponse) {
       const rendezvous: Rendezvous = new Rendezvous();
@@ -102,7 +102,7 @@ export class TakerendezvousComponent implements OnInit {
 
   annulerrendezvous(id: Number) {
 
-    this.reponse = confirm("vouslez d'annuler le rendez vous");
+    this.reponse = confirm("voulez  vous annuler le rendez vous ??");
 
     if (this.reponse) {
 

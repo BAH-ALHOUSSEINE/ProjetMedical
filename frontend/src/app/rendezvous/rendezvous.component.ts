@@ -63,7 +63,7 @@ export class RendezvousComponent implements OnInit {
   }
 
   deleterendezvous(id: Number) {
-    this.test = confirm("voulez vous surpprimer le renez vous");
+    this.test = confirm("voulez vous surpprimer le rendez vous");
     if (this.test) {
       alert(id);
       this.rendezvousservice.deleterendezvous(id).subscribe({
@@ -100,19 +100,29 @@ export class RendezvousComponent implements OnInit {
       }
     })
   }
-  addconsulattion(id: Number) {
+  addconsulattion(id: Number, idpatient: Number) {
 
 
-    this.matDialog.open(ConsultationComponent, {
-      width: '600px',
-      maxWidth: '90vw',
-      maxHeight: '90vh',
-      data: {
-        patient: this.patient,
-        idrendezvous: id   // ✅ passe-le ici à l’intérieur de "data"
+
+    this.patientservice.findByid(idpatient).subscribe({
+      next: (data) => {
+        this.matDialog.open(ConsultationComponent, {
+          width: '600px',
+          maxWidth: '90vw',
+          maxHeight: '90vh',
+          data: {
+            patient: data,
+            idrendezvous: id,
+          }
+        });
+
+
+
+      },
+      error: (error) => {
+
       }
-    });
-
+    })
 
   }
 

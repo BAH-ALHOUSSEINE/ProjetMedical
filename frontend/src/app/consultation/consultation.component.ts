@@ -55,6 +55,7 @@ export class ConsultationComponent implements OnInit {
     consultation.dateconsulataion = this.formconsultation.value.dateconsultation;
     consultation.diagnostique = this.formconsultation.value.diagnostique;
     consultation.prescription = this.formconsultation.value.prescription;
+
     consultation.patient = this.data.patient;
     this.serviceconsultation.addconsultation(consultation).subscribe({
 
@@ -67,6 +68,8 @@ export class ConsultationComponent implements OnInit {
         this.rendezvousservice.editrendezvous(this.data.idrendezvous, rendezvous).subscribe({
 
           next: (data) => {
+
+            window.location.reload();
 
           },
           error: (error) => {
