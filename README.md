@@ -43,7 +43,7 @@ Avant de lancer le projet, assure-toi d’avoir installé :
    clique simplement sur le bouton ▶️ “Run Application”.
 
 ➡️ Le serveur Spring Boot démarre sur :  
-👉 `http://localhost:8080` (ou `8081` selon ta configuration)
+👉 `http://localhost:8081`8081`
 
 ---
 
@@ -71,4 +71,6 @@ Avant de lancer le projet, assure-toi d’avoir installé :
 
 ---
 
+## Images 
 
+![Logo de la clinique dentaire](https://github.com/alhousseine/projet-medical/blob/main/src/assets/images/logo.png?raw=true)
