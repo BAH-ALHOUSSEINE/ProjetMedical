@@ -38,8 +38,11 @@
                 @if(element.status=="RENDEZVOUSNONPRIS"){
                 <button (click)="prendrerendezvous(element.id)">Prendre</button>
                 }
-                @else{
+                @if(element.status=="RENEDEZVOUSPRIS"){
                 <button (click)="annulerrendezvous(element.id)">Annulé</button>
+                }
+                @if(element.status=="TERMINE"){
+                <button>Termminé</button>
                 }
             </td>
         </ng-container>
