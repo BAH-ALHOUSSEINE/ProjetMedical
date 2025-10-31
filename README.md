@@ -73,4 +73,24 @@ Avant de lancer le projet, assure-toi d’avoir installé :
 
 ## Images 
 
-![Logo de la clinique dentaire](https://github.com/alhousseine/projet-medical/blob/main/src/assets/images/logo.png?raw=true)
+ ##acceuil
+![Acceuil](https://github.com/BAH-ALHOUSSEINE/ProjetMedical/blob/main/frontend/src/assets/images/clinique%20dentaire.PNG)
+
+## addmedecin
+![addmedecin](https://github.com/BAH-ALHOUSSEINE/ProjetMedical/blob/main/frontend/src/assets/images/addmedecinPNG.PNG)
+
+##addrenezvous 
+![addrenezvous](https://github.com/BAH-ALHOUSSEINE/ProjetMedical/blob/main/frontend/src/assets/images/addrendezvous.PNG)
+
+##rendezvousmedecin 
+![rendezvousmedecin](https://github.com/BAH-ALHOUSSEINE/ProjetMedical/blob/main/frontend/src/assets/images/rendezvouspatientPNG.PNG)
+
+##rendezvouspatient 
+![rendezvousmedecin](https://github.com/BAH-ALHOUSSEINE/ProjetMedical/blob/main/frontend/src/assets/images/rendezvouspatient.PNG)
+
+##profilmedecin
+![profilmedecin](https://github.com/BAH-ALHOUSSEINE/ProjetMedical/blob/main/frontend/src/assets/images/profilmedecin.PNG)
+
+
+
+
