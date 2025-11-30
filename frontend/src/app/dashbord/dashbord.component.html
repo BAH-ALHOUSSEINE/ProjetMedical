@@ -58,6 +58,8 @@
                         Mes rendez-vous
                     </button>
                 </mat-list-item>
+
+
                 }
 
                 @if(medecinconnecte != null) {
@@ -76,11 +78,15 @@
                         Ajouter un rendez-vous
                     </button>
                 </mat-list-item>
+                @if(medecinconnecte.specialiste=="adminmedecin"){
                 <mat-list-item>
                     <button mat-raised-button class="btn-green" (click)="addmedecin()">
                         Ajouter un Medecin
                     </button>
                 </mat-list-item>
+                }
+
+
                 }
 
             </mat-nav-list>

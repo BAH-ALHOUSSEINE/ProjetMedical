@@ -75,7 +75,7 @@ export class InscriptionComponent {
             });
             this.dialogRef.close('success');
             this.authpatientservie.setCurrentPatient(patient);
-            this.router.navigate([`dashbord`]);
+            this.router.navigate([``]);
 
           },
           error: (err) => {

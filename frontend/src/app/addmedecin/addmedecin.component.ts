@@ -52,7 +52,7 @@ export class AddmedecinComponent implements OnInit {
 
       this.medecinservice.addmedecin(medecin).subscribe({
         next: (date) => {
-          this.snackBar.open('Patient ajouté avec succèss ', 'Fermer', {
+          this.snackBar.open('Medecin ajouté avec succes ajouté avec succèss ', 'Fermer', {
             duration: 10000, // durée en ms
             verticalPosition: 'top', // ou 'bottom'
             horizontalPosition: 'center',

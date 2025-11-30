@@ -6,8 +6,9 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { provideServerRendering } from '@angular/platform-server';
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay())
-    , ReactiveFormsModule, FormsModule, provideHttpClient(), provideNativeDateAdapter()
+    , ReactiveFormsModule, FormsModule, provideHttpClient(), provideNativeDateAdapter(),
   ]
 };

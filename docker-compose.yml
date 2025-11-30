@@ -1,0 +1,62 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "81:80"
+    networks:
+      - network-1
+
+  backend:
+    build: ./bakend
+    container_name: backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/rendezvous?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    ports:
+      - "8081:8081"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - network-1
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=rendezvous
+    ports:
+      - "3306:3306"
+    volumes:
+      - my-database-data:/var/lib/mysql
+    networks:
+      - network-1
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    ports:
+      - "8082:80"
+    depends_on:
+      - db
+    networks:
+      - network-1
+
+volumes:
+  my-database-data:
+
+
+networks:
+  network-1:
+    driver: bridge
